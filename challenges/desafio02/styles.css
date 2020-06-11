@@ -1,0 +1,314 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+
+:root {
+    --color-blue: #6c4fbb;
+    --color-white: white;
+    --color-orange: orange;
+    --color-green: greenyellow;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    background-color: #232B2B;
+    height: 100%;
+}
+
+header{
+    text-align: center;
+    padding: 30px;
+    border-bottom: 5px cornflowerblue solid;
+    box-shadow: 0px 15px 16px -6px rgba(0,0,0,0.5);
+}
+
+header ul li{
+    display: inline-block;
+    padding: 30px;
+}
+
+header ul li a {
+    color: white;
+    padding: 30px;
+    text-decoration: none;
+}
+
+header ul li:hover{
+    transition: background-color 200ms;
+    background-color: #6c4fbb77;
+}
+
+/* SOBRE */
+
+.sobre {
+    text-align: center;
+    padding: 35px;
+}
+
+.sobre img {
+    height: 300px;
+    border-radius: 50%;
+    border: 5px var(--color-white) solid;
+    margin-bottom: 40px;
+}
+
+.sobre h1 {
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: bold;
+    color: var(--color-blue);
+}
+
+.sobre h2 {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 100;
+    opacity: 0.8;
+    color: var(--color-white);
+}
+
+.sobre ul {
+    margin-top: 5px;
+}
+
+.sobre li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.sobre ul li{
+    font-size: 25px;
+    line-height: 35px;
+    color: var(--color-white);
+}
+
+.sobre .sobre-links {
+    margin-top: 50px;
+}
+.sobre-links a {
+    color: var(--color-write);
+    text-decoration: none;
+}
+
+.sobre-links a:hover {
+    color: var(--color-blue);
+    transition: color 200ms;
+}
+
+/* == CONTEUDO == */
+
+.courses{
+    text-align: center;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.courses .traco {
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-blue);
+    transition: 0.4s;
+}
+
+.courses h1 {
+    display: inline-block;
+    padding: 35px 0;
+    font-size: 32px;
+    height: 42px;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.courses h1:hover > .traco {
+    width: 100px;
+}
+
+.courses-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.course {
+    background-color: rgba(20, 20, 20, 0.568);
+    border: 5px rgba(58, 58, 58, 0.568) solid;
+    margin: 35px 0;
+    border-radius: 10px;
+}
+
+.course:hover {
+    background-color: rgba(58, 58, 58, 0.568);
+}
+
+.course > p {
+    font-size: 25px;
+    line-height: 35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 6px;
+    margin: 60px auto;
+}
+
+.course__image-container {
+    padding: 30px;
+    height: 200px;
+}
+
+.course__content {
+    padding: 30px 61px;
+    color: white;
+}
+
+.course__button {
+    width: 304px;
+    margin: 60px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.course__button a {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.course__button:hover > a{
+    color: var(--color-white);
+}
+
+
+/* STARTER */
+
+#starter > p{
+    color: var(--color-blue);
+    border: 2px var(--color-blue) solid;
+}
+
+#starter .course__content strong {
+    color: var(--color-blue);
+}
+
+#starter .course__button {
+    background-color: var(--color-blue);
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+#starter .course__button:hover{
+    background-color: rgba(58, 58, 58, 0.568);
+    opacity: 0.8;
+    border: 2px var(--color-blue) solid;
+}
+
+#starter:hover {
+    border: 2px var(--color-blue) solid;
+}
+
+/* LAUNCHBASE */
+
+#launchbase > p{
+    color: var(--color-orange);
+    border: 2px var(--color-orange) solid;
+}
+
+#launchbase .course__content strong {
+    color: var(--color-orange);
+}
+
+#launchbase .course__button {
+    background-color: var(--color-orange);
+    opacity: 0.7;
+}
+
+#launchbase .course__button:hover{
+    background-color: rgba(58, 58, 58, 0.568);
+    opacity: 0.8;
+    border: 2px var(--color-orange) solid;
+}
+
+#launchbase:hover {
+    border: 2px var(--color-orange) solid;
+}
+
+/* GOSTACK */
+
+#gostack > p{
+    color: var(--color-green);
+    border: 2px var(--color-green) solid;
+}
+
+#gostack  .course__content strong {
+    color: var(--color-green);
+}
+
+#gostack  .course__button {
+    background-color: var(--color-green);
+    opacity: 0.7;
+}
+
+#gostack .course__button:hover{
+    background-color: rgba(58, 58, 58, 0.568);
+    opacity: 0.8;
+    border: 2px var(--color-green) solid;
+}
+
+#gostack:hover {
+    border: 2px var(--color-green) solid;
+}
+
+/* MODAL-OVERLAY */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    top: 5%;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.modal.fullscreen {
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+iframe {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 5%;
+}
+
+.modal-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.modal-button i {
+    cursor: pointer;
+}
+
+
+
+

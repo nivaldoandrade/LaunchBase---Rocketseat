@@ -1,0 +1,37 @@
+{% extends "layout.njk" %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock link %}
+ {% block tittle %}
+    <title>Rockseat - Courses</title>
+ {% endblock tittle %}
+
+{% block content %}
+
+    <main>
+        <section class="courses">
+            <h1><div class="traco"></div>Cursos</h1>
+            <div class="courses-wrapper">
+            {% for course in courses %}
+
+                <div class="course" id="{{ course.id }}">
+                    <p>{{ course.number }}</p>
+                    <div class="course__image-container">
+                        <img src="{{ course.img }}" alt="Starter">
+                    </div>
+                    <div class="course__content">
+                        <p>{{ course.description }}</p>
+                    </div>
+                    <div class="course__button">
+                        <a>{{ course.button}}</a>
+                    </div>
+                </div>
+                
+            {% endfor %}
+            </div>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+
+{% endblock content %}

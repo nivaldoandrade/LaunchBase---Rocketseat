@@ -1,0 +1,53 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <main>
+        <section class="content">
+            <div class="card table-container">
+                <div class="header">
+                    <a href="/students/create">NOVO</a>
+                    <form action="/students" method="get">
+                        <input 
+                        type="text" 
+                        value="{{filter}}"
+                        name="filter"
+                        placeholder="Nome ou email">
+                        <button type="submit">Filtrar</button>
+                    </form>    
+                </div>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Estudante</th>
+                            <th>Email</th>
+                            <th>Ano Escolar</th>
+                            <th>Professor(a)</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                                <td>
+                                    <div class="table-imgname">
+                                        <span style="background-image:url({{ student.avatar_url }})"></span>
+                                        {{ student.name }}
+                                    </div>
+                                </td>
+                                <td>{{ student.email}}</td>
+                                <td>{{ student.school_year }}</td>
+                                <td>{{ student.teacher_name }}</td>
+                                <td><a href="/students/{{ student.id}}">VER</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="pagination"
+                data-page={{ pagination.page }}
+                data-total={{ pagination.total}}
+                data-filter={{filter}}>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}}

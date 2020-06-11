@@ -1,0 +1,65 @@
+<div class="item">
+    <h1>Avatar_url</h1>
+    <input 
+    type="url" 
+    name="avatar_url" 
+    placeholder="https://"
+    value="{{ student.avatar_url }}">
+</div>
+<div class="item">
+    <h1>Nome Completo</h1>
+    <input 
+    type="text" 
+    name="name" 
+    placeholder="Nome do Aluno"
+    value="{{ student.name }}">
+</div>
+<div class="item">
+    <h1>Data de Nascimento</h1>
+    <input 
+    type="date" 
+    name="birth_date"
+    value="{{ student.birth_date }}">
+</div>
+<div class="item">
+    <h1>Email</h1>
+    <input 
+    type="email" 
+    name="email"
+    placeholder="Email"
+    value="{{ student.email }}">
+</div>
+<div class="item">
+    <h1>Ano Escolar</h1>
+    <select name="school_year" id="">
+        <optgroup label="Ensino Fundamental"></optgroup>
+        <option value="5EF" {% if student.school_year == "5EF" %} selected {% endif %}>5º ano</option>
+        <option value="6EF" {% if student.school_year == "6EF" %} selected {% endif %}>6º ano</option>
+        <option value="7EF" {% if student.school_year == "7EF" %} selected {% endif %}>7º ano</option>
+        <option value="8EF" {% if student.school_year == "8EF" %} selected {% endif %}>8º ano</option>
+        <option value="9EF" {% if student.school_year == "9EF" %} selected {% endif %}>9º ano</option>
+        <optgroup label="Ensino Médio"></optgroup>
+        <option value="1EM" {% if student.school_year == "1EM" %} selected {% endif %}>1º ano</option>
+        <option value="2EM" {% if student.school_year == "2EM" %} selected {% endif %}>2º ano</option>
+        <option value="3EM" {% if student.school_year == "3EM" %} selected {% endif %}>3º ano</option>
+    </select>
+</div>
+<div class="item">
+    <h1>Carga Horária</h1>
+    <input 
+    type="number" 
+    name="workload"
+    placeholder="Ex: 50"
+    value="{{ student.workload }}">
+</div>
+<div class="item">
+    <h1>Professor(a)</h1>
+    <select name="teacher">
+    {% for teacher in teachersOption %}
+        <option value="{{ teacher.id }}" {% if student.teacher_id == teacher.id %} selected {% endif %}>
+        {{ teacher.name }}
+        </option>
+    {% endfor %}
+    </select>
+</div>
+    <button type="submit">Salvar</button>

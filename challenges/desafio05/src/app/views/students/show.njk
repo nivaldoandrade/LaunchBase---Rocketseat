@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <main>
+        <section class="content">
+            <div class="card">
+                <div class="image" style="background: url({{ student.avatar_url }}) center center / cover"></div>
+                <div class="details">
+                    <div class="item">
+                        <h1>Nome Completo</h1>
+                        <p>{{ student.name }}</p>
+                    </div>
+                    <div class="item">
+                        <h1>Data Aniversário</h1>
+                        <p>{{ student.birth_date }}</p>
+                    </div>
+                    <div class="item">
+                        <h1>Email</h1>
+                        <p>{{ student.email }}</p>
+                    </div>
+                    <div class="item">
+                        <h1>Ano Escolar</h1>
+                        <p>{{ student.school_year }}</p>
+                    </div>
+                    <div class="item">
+                        <h1>Carga Horária</h1>
+                        <p>{{ student.workload }} horas</p>
+                    </div>
+                    <div class="item">
+                        <h1>Professor(a)</h1>
+                        <p>{{ student.teacher_name }}</p>
+                    </div>
+                    <a class="button" href="{{student.id}}/edit">Editar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}}

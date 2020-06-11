@@ -1,0 +1,26 @@
+{% extends "layout.njk" %}
+
+{% block link %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock link %}
+{% block tittle %}
+    <title>Rockseat - {{ course.name }}</title>
+{% endblock tittle %}
+
+{% block content %}
+
+    <main>
+        <section class="courses course__page-{{ course.id }}">
+            <h1><div class="traco"></div>Treinamento {{ course.name }}</h1>
+            <div class="course-single course-{{ course.id }} ">
+                <div class="course-video">
+                    <iframe src="https://rocketseat.com.br/{{course.id}}" frameborder="0"></iframe>
+                </div>
+                <i class="material-icons icon-fullscreen {{ course.id}}">fullscreen</i>
+                <i class="material-icons icon-close">close</i>
+            </div>
+        </section>
+    </main>
+    <script src="/scripts.js"></script>
+
+{% endblock content %}

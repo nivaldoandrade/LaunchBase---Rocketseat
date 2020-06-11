@@ -1,0 +1,55 @@
+<div class="item">
+    <h1>Avatar_url</h1>
+    <input 
+    type="url" 
+    name="avatar_url" 
+    placeholder="https://"
+    value="{{ student.avatar_url }}">
+</div>
+<div class="item">
+    <h1>Nome Completo</h1>
+    <input 
+    type="text" 
+    name="name" 
+    placeholder="Nome do Aluno"
+    value="{{ student.name }}">
+</div>
+<div class="item">
+    <h1>Data de Nascimento</h1>
+    <input 
+    type="date" 
+    name="birth"
+    value="{{ student.birth }}">
+</div>
+<div class="item">
+    <h1>Email</h1>
+    <input 
+    type="email" 
+    name="email"
+    placeholder="Email"
+    value="{{ student.email }}">
+</div>
+<div class="item">
+    <h1>Ano Escolar</h1>
+    <select name="schoolYear" id="">
+        <optgroup label="Ensino Fundamental"></optgroup>
+        <option value="5EF" {% if student.schoolYear == "5EF" %} selected {% endif %}>5º ano</option>
+        <option value="6EF" {% if student.schoolYear == "6EF" %} selected {% endif %}>6º ano</option>
+        <option value="7EF" {% if student.schoolYear == "7EF" %} selected {% endif %}>7º ano</option>
+        <option value="8EF" {% if student.schoolYear == "8EF" %} selected {% endif %}>8º ano</option>
+        <option value="9EF" {% if student.schoolYear == "9EF" %} selected {% endif %}>9º ano</option>
+        <optgroup label="Ensino Médio"></optgroup>
+        <option value="1EM" {% if student.schoolYear == "1EM" %} selected {% endif %}>1º ano</option>
+        <option value="2EM" {% if student.schoolYear == "2EM" %} selected {% endif %}>2º ano</option>
+        <option value="3EM" {% if student.schoolYear == "3EM" %} selected {% endif %}>3º ano</option>
+    </select>
+</div>
+<div class="item">
+    <h1>Carga Horária</h1>
+    <input 
+    type="number" 
+    name="workload"
+    placeholder="Ex: 50"
+    value="{{ student.workload }}">
+</div>
+    <button type="submit">Salvar</button>

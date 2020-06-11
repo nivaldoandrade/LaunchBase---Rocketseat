@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    <main>
+        <section class="content">
+        <div class="card">
+                <div class="image"></div>
+                <div class="details">
+                    <form action="/teachers?_method=PUT" method="POST" >
+                        {% include 'teachers/fields.njk'%}
+                        <input type="hidden" name="id" value="{{ teacher.id }}">
+                    </form>
+                    <form id="form-delete" action="/teachers?_method=DELETE" method="POST">
+                        <input type="hidden" 
+                        name="id" 
+                        value="{{ teacher.id }}"
+                        >
+                        <button id="form-delete" type="submit">Deletar</button>
+                        {% include '../confirm.njk'%}
+                     </form>
+                </div>
+        </div>
+        </section>
+    </main>
+{% endblock %}}
