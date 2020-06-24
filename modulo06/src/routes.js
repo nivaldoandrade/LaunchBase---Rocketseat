@@ -10,6 +10,7 @@ routes.get("/", (req, res) => {
 });
 
 routes.get("/products/create", ProductsControllers.create);
+routes.get("/products/:id", ProductsControllers.show);
 routes.get("/products/:id/edit", ProductsControllers.edit);
 routes.post("/products", multer.array('photos', 6), ProductsControllers.post);
 routes.put("/products", multer.array('photos', 6), ProductsControllers.put);

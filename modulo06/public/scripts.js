@@ -54,10 +54,10 @@ const PhotosUpload = {
 
             };
 
-            PhotosUpload.input.files = PhotosUpload.getAllFiles();
-
             reader.readAsDataURL(file);
         });
+		
+		PhotosUpload.input.files = PhotosUpload.getAllFiles();
     },
     hasLimit(event) {
         const { uploadLimit, input, previewDiv } = PhotosUpload;
@@ -89,33 +89,39 @@ const PhotosUpload = {
     },
     getAllFiles() {
         const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
-        PhotosUpload.files.forEach(file => dataTransfer.items.add(file))
+        PhotosUpload.files.forEach(file => dataTransfer.items.add(file));
 
-        return dataTransfer.files
+        return dataTransfer.files;
     }, 
     getCreateDiv(image) {
         const div = document.createElement('div');
         div.classList.add('photos');
 
-        div.onclick = PhotosUpload.removePhoto;
-
         div.appendChild(image);
-        div.appendChild(PhotosUpload.getCreateButton());
-
+        div.appendChild(PhotosUpload.getCreateButtonRemove());
+        div.appendChild(PhotosUpload.getCreateButtonFeatured());
+        
         return div;
     },
-    getCreateButton() {
+    getCreateButtonFeatured() {
+        const button = document.createElement('a');
+        button.innerHTML = 'Imagem de destaque';
+        button.onclick = PhotosUpload.addFetuaredImg; 
+        return button
+    },
+    getCreateButtonRemove() {
         const button = document.createElement('i');
         button.classList.add('material-icons');
+        button.onclick = PhotosUpload.removePhoto; 
         button.innerHTML = 'close';
         return button
     },
     removePhoto(event) {
         const photoDiv = event.target.parentNode;
-        const photoArray = Array.from(PhotosUpload.previewDiv.children);
-        const index = photoArray.indexOf(photoDiv);
+        const photoDivAll = Array.from(PhotosUpload.previewDiv.querySelectorAll('.photos'));
+        const index = photoDivAll.indexOf(photoDiv);
 
-        PhotosUpload.files.splice(index, 1);
+        PhotosUpload.files.splice(index-1, 1);
         PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
         photoDiv.remove();
@@ -133,5 +139,48 @@ const PhotosUpload = {
         
         photoDiv.remove();
     },
+    addFetuaredImg(event) {
+        const photoDiv = event.target.parentNode;
+        const photoDivAll = Array.from(PhotosUpload.previewDiv.querySelectorAll('.photos'));
+        const index = photoDivAll.indexOf(photoDiv)
+        const inputFetuared = PhotosUpload.previewDiv.querySelector('input[name="image_fetuared"]');
+
+        inputFetuared.value = index;
+
+        photoDivAll.forEach(photo => photo.classList.remove('active'));
+
+        photoDiv.classList.add('active');
+        
+    },
 }
 
+const ImageGallery = {
+    highlight: document.querySelector('.gallery .highlight > img'),
+    preview: document.querySelectorAll('.gallery .gallery-preview > img'), 
+    setImage(event) {
+        const { target } = event;
+        ImageGallery.preview.forEach(image => image.classList.remove('active'));
+        target.classList.add("active");
+
+        ImageGallery.highlight.src = target.src;
+        Lightbox.image.src = target.src;
+    },
+}
+
+const Lightbox = {
+    target: document.querySelector('.highlight .lightbox-target'),
+    image: document.querySelector('.highlight .lightbox-target > img'),
+    closeButton: document.querySelector('.highlight .lightbox-target .lightbox-close'),
+    open() {
+        Lightbox.target.style.opacity = 1;
+        Lightbox.target.style.top = 0;
+        Lightbox.target.style.bottom = 0;
+        Lightbox.closeButton.style.top = 0;
+    },
+    close() {
+        Lightbox.target.style.opacity = 0;
+        Lightbox.target.style.top = '100%';
+        Lightbox.target.style.bottom = 'initial';
+        Lightbox.closeButton.style.top = '-80px';
+    },
+}

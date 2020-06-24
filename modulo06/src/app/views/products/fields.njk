@@ -32,6 +32,7 @@
                 id="photos-input"
                 multiple
                 accpet="image/*"
+                value='ok';
                 onChange="PhotosUpload.handleFileInput(event)"
             >
             <label for="photos">Selecione até 6 Fotos</label>
@@ -39,15 +40,15 @@
         <div id="photos-preview">
         {% if files %} 
             {% for image in files %}  
-            <div class="photos" id={{ image.id }}>
+            <div class="photos" id={{ image.id }} value='false'>
                 <img src="{{ image.src }}" alt="{{ image.name }}">
-                <i class="material-icons" onClick="PhotosUpload.removeFile(event)">
-                close
-                </i>        
+                <i onClick="PhotosUpload.addFetuaredImg(event)">Imagem de destaque</i>
+                <i class="material-icons" onClick="PhotosUpload.removeFile(event)">close</i>   
             </div>
             {% endfor %}
         {% endif %}
         <input type="hidden" name="remove_files">
+        <input type="hidden" name="image_fetuared">
         </div>
     </div>
 </div>
