@@ -2,19 +2,18 @@ const express = require('express');
 const routes = express.Router();
 const multer = require('./app/middlewares/multer');
 
-const ProductsControllers = require("../src/app/controllers/productsController");
+const ProductsController = require("../src/app/controllers/ProductsController");
+const HomeController = require("../src/app/controllers/HomeController");
 
 
-routes.get("/", (req, res) => {
-    return res.render("layout.njk");
-});
+routes.get("/", HomeController.index);
 
-routes.get("/products/create", ProductsControllers.create);
-routes.get("/products/:id", ProductsControllers.show);
-routes.get("/products/:id/edit", ProductsControllers.edit);
-routes.post("/products", multer.array('photos', 6), ProductsControllers.post);
-routes.put("/products", multer.array('photos', 6), ProductsControllers.put);
-routes.delete("/products", ProductsControllers.delete);
+routes.get("/products/create", ProductsController.create);
+routes.get("/products/:id", ProductsController.show);
+routes.get("/products/:id/edit", ProductsController.edit);
+routes.post("/products", multer.array('photos', 6), ProductsController.post);
+routes.put("/products", multer.array('photos', 6), ProductsController.put);
+routes.delete("/products", ProductsController.delete);
 
 
 // ALIAS

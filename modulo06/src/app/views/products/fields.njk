@@ -42,7 +42,7 @@
             {% for image in files %}  
             <div class="photos" id={{ image.id }} value='false'>
                 <img src="{{ image.src }}" alt="{{ image.name }}">
-                <i onClick="PhotosUpload.addFetuaredImg(event)">Imagem de destaque</i>
+                <a onClick="PhotosUpload.addFetuaredImg(event)">Imagem de destaque</a>
                 <i class="material-icons" onClick="PhotosUpload.removeFile(event)">close</i>   
             </div>
             {% endfor %}

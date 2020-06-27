@@ -262,12 +262,12 @@ form .item #photos-preview {
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin: 4px 0;
-    width: 100%;
+    width: 200px;
 }
 
 form .item #photos-preview img {
-    width: 100%;
-    height: 100%;
+    width: 200px;
+    height: 200px;
     min-height: 150px;
     object-fit: cover;
 }
@@ -283,7 +283,7 @@ form .item #photos-preview .photos.active {
 
 form .item #photos-preview .photos i {
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     left: 0;
     width: 100%;
     height: 30%;
@@ -303,7 +303,7 @@ form .item #photos-preview .photos a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: calc(70% - 4px);
     background-color: #1f83fd94;
     font-size: 14px;
     font-weight: bold;
@@ -459,6 +459,59 @@ form .item #photos-preview .photos:hover i {
     font-size: 14px;
     letter-spacing: .4px;
 }
+
+/* SHOP */
+
+.shop h2 {
+    margin: 48px 0;
+}
+
+.shop .items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.shop .product {
+    display: grid;
+}
+
+.shop .product .image {
+    padding-top: 56.25%;
+
+    background-position:center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.shop .product h4 {
+    margin: 8px 0;
+    font-weight: normal;
+    color: #999;
+}
+
+.shop .product .price {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.shop .product .price p {
+    margin-right: 8px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #101010;
+}
+
+.shop .product .price .old-price {
+    padding: 0;
+    margin: 4px 0;
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+
 
 
 

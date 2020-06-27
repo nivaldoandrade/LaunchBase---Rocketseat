@@ -99,17 +99,14 @@ module.exports = {
             src:`${req.protocol}://${req.headers.host}${file.path.replace('public',"")}`
         }));
         
-        console.log(files);
-
- 
         return res.render("products/edit.njk", {product, categories, files});
     },
     async put(req, res) {
         const keys = Object.keys(req.body);
 
         for(key of keys) {
-            if(req.body[key] == '' && key != 'remove_files' && key != 'photos') {
-                return res.send('Please, fill all fields');
+            if(req.body[key] == '' && key != 'remove_files' && key != 'photos' && key != 'image_fetuared') {
+                return res.send(`${key} - Please, fill all fields`);
             };
         };
         
