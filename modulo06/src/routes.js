@@ -4,10 +4,15 @@ const multer = require('./app/middlewares/multer');
 
 const ProductsController = require("../src/app/controllers/ProductsController");
 const HomeController = require("../src/app/controllers/HomeController");
+const SearchController = require("../src/app/controllers/SearchController");
 
-
+// HOME
 routes.get("/", HomeController.index);
 
+// SEARCH
+routes.get("/products/search", SearchController.index);
+
+// PRODUCTS
 routes.get("/products/create", ProductsController.create);
 routes.get("/products/:id", ProductsController.show);
 routes.get("/products/:id/edit", ProductsController.edit);

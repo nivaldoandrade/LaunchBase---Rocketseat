@@ -72,5 +72,34 @@ module.exports = {
     },
     files(id) {
         return db.query(`SELECT * FROM files WHERE product_id = $1 ORDER BY fetuared DESC`, [id]);
+    },
+    search(params) {
+        const { filter, category } = params;
+
+        let query = '',
+            filterQuery = `WHERE`;
+
+        if(category) {
+            filterQuery = `
+                ${filterQuery}
+                products.category_id = ${category}
+                AND
+            `
+        }
+
+        filterQuery = `
+            ${filterQuery}
+            products.name ilike '%${filter}%'
+            OR products.description ilike '%${filter}%'
+        `
+        
+        query = `
+            SELECT products.*, categories.name AS category_name
+            FROM products
+            LEFT JOIN categories ON (products.category_id = categories.id)
+            ${filterQuery}
+            GROUP BY products.id, categories.name
+        `
+        return db.query(query);
     }
 };
