@@ -1,15 +1,8 @@
 # Desafios
 
 ## Indice
-- [Sobre](#-sobre)
 - [Desafios](#-desafios)
 
-
----
-
-## 📋 Sobre
-
-O **launchBase** é um treinamento no formato de bootcamp online realizado pela **Rocketseat**. Utilizando as ferramentas e conceitos mais modernos de desenvolvimento web.
 
 ---
 
