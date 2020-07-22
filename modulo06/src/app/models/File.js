@@ -22,6 +22,22 @@ module.exports = {
 
         return db.query(query, values);
     },
+    // async update(product_id, data) {
+    //     const filesProduct = await db.query("SELECT * FROM files WHERE product_id = $1", [id]);
+    //     console.log(filesProduct);
+    //     let query = "UPDATE set files"
+
+    //     Object.keys(data).map((key, index, array) => {
+    //         query = `${query}
+    //         ${key} = "${data[key]}"
+    //         WHERE id = ${product_id}
+    //         `;
+    //     })
+
+    //     console.log(query);
+    //     await db.query(query);
+    //     return;
+    // },
     async remove(id) {
         try {
             const result = await db.query(`SELECT * FROM FILES WHERE id = $1`, [id]);

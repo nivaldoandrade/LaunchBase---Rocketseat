@@ -39,6 +39,8 @@ module.exports = {
                     fetuared: false,
                 }
         });
+        
+        req.body.user_id = req.session.userId;
 
         let results = await Product.create(req.body);
         const productId = results.rows[0].id;
@@ -120,9 +122,11 @@ module.exports = {
         };
 
         if(req.files.length != 0) {
-            const newFilePromise = req.files.map(file => File.create({...file, product_id: req.body.id}));
+            let newFilePromise = req.files.map(file => File.create({...file, product_id: req.body.id}));
             await Promise.all(newFilePromise, req.body.id);
         }
+
+        // await File.update({product_id: req.body.id, fetuared })
 
         req.body.price = req.body.price.replace(/\D/g, "");
 

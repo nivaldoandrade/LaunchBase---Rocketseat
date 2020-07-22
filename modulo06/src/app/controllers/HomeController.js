@@ -1,7 +1,6 @@
 const { formatPrice } = require("../../lib/utils");
 const Product = require("../models/Product");
 const File = require("../models/File");
-const { get } = require("browser-sync");
 
 
 module.exports = {

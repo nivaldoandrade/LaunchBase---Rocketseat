@@ -26,7 +26,105 @@ const Mask = {
             currency: 'BRL'
         }).format(value/100);
     },
+    cpfCnpj(value) {
+        value = value.replace(/\D/g, "");
+
+        if(value.length > 14) {
+            value = value.slice(0, -1);
+        }
+        
+        if(value.length > 11) {
+            value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d)/, "$1.$2.$3/$4-$5");
+        } else {
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d)/, "$1.$2.$3-$4");
+        };
+
+        return value;
+    },
+    cep(value) {
+        value = value.replace(/\D/g, "");
+
+        if(value.length > 8) {
+            value =  value.slice(0, -1);
+        };
+
+        value = value.replace(/(\d{5})(\d)/, "$1-$2");
+
+        return value;
+    }
 };
+
+const Validate = {
+    apply(input, func) {
+        Validate.clearErrors(input);
+
+        let results = Validate[func](input.value);
+        input.value = results.value;
+
+        if(results.error) 
+            Validate.displayError(input, results.error);
+
+    },
+    isEmail(value) {
+        let error = null;
+
+        const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+        if(!value.match(emailFormat)) 
+            error = "Email inválido"
+        
+
+        return {
+            error,
+            value,
+        }
+    },
+    isCpfCnpj(value) {
+        let error = null;
+
+        const clearValue = value.replace(/\D/g, "");
+
+        if(clearValue.length > 11 && clearValue.length !== 14) {
+            error = 'CPNJ inválido';
+        } 
+        else if(clearValue.length < 12 && clearValue.length !== 11) {
+            error = 'CPF inválido';
+        };
+
+        return {
+            error,
+            value,
+        };
+    },
+    isCep(value) {
+        let error = null;
+
+        const clearValue = value.replace(/\D/g, "");
+
+        if(clearValue.length > 8) {
+            error = 'CEP inválido'
+        };
+
+        return {
+            error,
+            value,
+        };
+    },
+    displayError(input, error) {
+        const div = document.createElement('div');
+        div.classList.add('error');
+        div.innerHTML = error;
+        input.parentNode.appendChild(div);
+        input.focus();
+    },
+    clearErrors(input) {
+        const error = input.parentNode.querySelector('.error');
+        
+        if(error) {
+            error.remove();
+        }
+    },
+}
 
 const PhotosUpload = {
     input: '',

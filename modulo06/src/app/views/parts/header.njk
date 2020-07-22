@@ -2,7 +2,7 @@
     <div class="container">
         <a href="/">
             <div class="logo">
-                <h1>Lauchstore</h1>
+                <h1>Launchstore</h1>
                 <h2>COMPRA E VENDA</h2>
             </div>      
         </a>
@@ -26,11 +26,29 @@
                         Novo Anúncio
                     </a>
                 </li>
-                <li>
+                <li class="accounts">
                     <a href="/accounts">
                         <i class="material-icons">account_circle</i>
                         Minha Conta
                     </a>
+                    {% if session.userId %}
+                    <ul class="submenu">
+                        <li>
+                            <a href="/users">Minha conta</a>
+                        </li>
+                        <li>
+                            <a href="/users/buying">Meus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="/users/selling">Minhas vendas</a>
+                        </li>
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <button>Sair</button>
+                            </form>
+                        </li>
+                    </ul>
+                    {%endif%}
                 </li>
             </ul>
         </nav>
