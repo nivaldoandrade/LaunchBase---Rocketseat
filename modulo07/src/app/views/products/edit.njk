@@ -1,0 +1,25 @@
+{% extends 'layout.njk' %}
+{% import 'parts/cards.njk' as card %}
+
+{% block content %}
+    {% call card.render('Atualizar Produto', 'product-edit container')%}
+        <form action="/products?_method=PUT" method="POST" enctype="multipart/form-data">
+
+            <div class="fields">
+                {% include 'products/fields.njk' %}
+                <input 
+                type="hidden" 
+                name="id" 
+                value="{{ product.id }}">
+            </div>
+            <button class="button" id="button-update" type="submit">Salvar</button>
+        </form>
+        <form action="/products?_method=DELETE" method="POST">
+            <input 
+            type="hidden" 
+            name="id" 
+            value="{{ product.id }}">
+            <button class="button" id="button-delete" type="submit">Deletar</button>
+        </form>
+    {%endcall%}
+{% endblock content %}

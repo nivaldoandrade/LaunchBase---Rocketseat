@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    {% include 'parts/styles.njk'%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block head %}
+    <title>Launchstore</title>
+    {% endblock %}
+</head>
+<body>
+
+    {% include 'parts/messages.njk'%}
+
+    {% include 'parts/header.njk' %}
+    <main>
+    {% block content %} {% endblock %}
+    </main>
+    {% include 'parts/footer.njk' %}
+    
+</body>
+</html> 
