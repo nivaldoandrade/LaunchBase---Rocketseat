@@ -82,6 +82,47 @@ if(pagination){
     createPagination(pagination);
 };
 
+// VALIDATOR
+
+const Validator = {
+    allFields(e) {
+        const fields = document.querySelectorAll('.item input');
+        const radioFields = document.querySelector('.item.radio');
+        const errorMessage = document.querySelectorAll('.item .error');
+        let radio = false;
+
+        if(errorMessage.length > 0) {
+            for(error of errorMessage) {
+                error.remove();
+            }
+        }
+    
+        for(field of fields) {
+            if(field.value == '') {
+                const message = document.createElement('div');
+                message.classList.add('error');
+                message.innerHTML = 'Obrigatório*';
+                field.parentNode.append(message);
+                e.preventDefault();
+            }
+
+            if(field.checked) {
+                radio = true;
+            }
+        }
+
+        if(!radio) {
+            const message = document.createElement('div');
+            message.classList.add('error');
+            message.innerHTML = 'Obrigatório*';
+            radioFields.append(message);
+            e.preventDefault();
+        }
+
+        
+    }
+}
+
 
 
 

@@ -21,7 +21,7 @@
         name="birth"
         value="{{ instructor.birth }}">
     </div>
-    <div class="item">
+    <div class="item radio">
         <h5>Sexo</h5>
         <span>
             <input 
@@ -52,4 +52,4 @@
             placeholder="Serviços separado por VIRGULA"
             value="{{ instructor.services }}">
     </div>
-    <button type="submit">Salvar</button>
+    <button type="submit" onclick="Validator.allFields(event)">Salvar</button>

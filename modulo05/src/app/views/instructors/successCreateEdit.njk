@@ -1,0 +1,26 @@
+{%extends 'layout.njk'%}
+
+{% block content %}
+<main>
+    <section class="content">
+        <div class="card success-page">
+            <div class="success-lottie"></div>
+            <div class="info">
+                <h3>Instrutor cadastrado ou editado com sucesso.</h3>
+                <a href="/">Voltar para listagem de instrutors</a>
+            </div>
+        </div>
+    </section>
+    <script src="/lottie.min.js"></script>
+    <script>
+        const element = document.querySelector('.success-lottie');
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/8382-gympass-jump-rope-girl.json' // the path to the animation json
+        });
+    </script>
+</main>
+{% endblock content %}

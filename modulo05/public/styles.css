@@ -57,6 +57,19 @@ header {
     transition: width 200ms ease-in-out;
 }
 
+/* ERROR FORM */
+
+.error {
+    position: absolute;
+    top: 16px;
+    right: 0;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}
+
+
 /* == CARD == */
 
 /* AVATAR */
@@ -88,6 +101,7 @@ header {
 }
 
 .item {
+    position: relative;
     padding: 16px 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
@@ -315,6 +329,47 @@ tbody td:last-child a {
 .pagination a:hover {
     filter: brightness(0.3);
     border-bottom: 1px solid var(--primary-color);
+}
+
+/* == SUCCESS PAGE == */
+
+.card.success-page,
+.card.error-page {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.success-lottie,
+.error-lottie {
+    height: 200px;
+    margin: 40px 0;
+}
+
+.success-page .info h3,
+.error-page .info h3 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+
+.success-page .info a,
+.error-page .info a {
+    font-size: 17px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: text-decoration 1000ms;
+}
+
+.error-page .info a { 
+    color: rgb(230, 44, 44);
+}
+
+.success-page .info a:hover,
+.error-page .info a:hover {
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 
